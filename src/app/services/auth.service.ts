@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Role } from './enums/role';
+import { Role } from '../enums/role';
 
 @Injectable({
   providedIn: 'root'

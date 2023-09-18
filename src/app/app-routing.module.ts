@@ -25,6 +25,7 @@ const routes: Routes = [
   {
     path: 'unauthorized', component: LoginComponent
   },
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
   {
     path: 'post', component: PostComponent,
     canActivate: [HasRoleGuard],

@@ -8,7 +8,7 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Role } from './enums/role';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -31,6 +31,8 @@ export class HasRoleGuard implements CanActivate {
     console.log(hasRole);
 
     //Vai retornar a role do usuario ou a rota de acesso negado
+      console.log(hasRole);
+      
     return hasRole || router.parseUrl('/login');
   }
 }

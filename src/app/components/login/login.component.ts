@@ -38,7 +38,7 @@ export class LoginComponent {
         } else {
           window.location.href = 'http://localhost:4200/home';
         }
-      }
+      })
     }
   }
 
