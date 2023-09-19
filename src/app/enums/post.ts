@@ -1,6 +1,6 @@
 export enum Post {
-    TITULO = 'titulo',
-    TEXTO = 'texto',
+    title = 'title',
+    content = 'content',
     CHECK = 'check',
     POST_ID = 'post_id'
 }

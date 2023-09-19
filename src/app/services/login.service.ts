@@ -7,8 +7,10 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
+  postURL = 'http://localhost:8080/';
+
   login(email: string, password: string) {
-    return this.http.post('http://localhost:8080/login', {
+    return this.http.post(`${this.postURL}login`, {
       email,
       password
     });

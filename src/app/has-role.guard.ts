@@ -14,6 +14,11 @@ import { AuthService } from './services/auth.service';
   providedIn: 'root',
 })
 export class HasRoleGuard implements CanActivate {
+
+
+  constructor(private router: Router,
+    private service: AuthService) {}
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -22,17 +27,13 @@ export class HasRoleGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const router: Router = inject(Router);
-    const userRole: Role = inject(AuthService).getUserRole();
+    // const router: Router = inject(Router);
+    const userRole: Role = this.service.getUserRole();
 
     const expectedRoles: Role[] = route.data['roles'];
 
     const hasRole: boolean = expectedRoles.some((role) => userRole === role);
-    console.log(hasRole);
-
-    //Vai retornar a role do usuario ou a rota de acesso negado
-      console.log(hasRole);
       
-    return hasRole || router.parseUrl('/login');
+    return hasRole || this.router.parseUrl('/login');
   }
 }

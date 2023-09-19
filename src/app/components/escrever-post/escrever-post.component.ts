@@ -12,14 +12,16 @@ export class EscreverPostComponent {
 
   constructor(private service: PostService) {
     this.form = new FormGroup({
-      titulo: new FormControl('', Validators.required),
-      texto: new FormControl('', Validators.required),
+      title: new FormControl('', Validators.required),
+      content: new FormControl('', Validators.required),
       check: new FormControl(''),
     });
     
   }
 
   onSubmit() {
+    console.log(this.form.value);
+    
     if(this.form.valid)
     {
       this.service.createPost(this.form.value).subscribe((res: any) => {

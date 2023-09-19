@@ -12,7 +12,7 @@ export class AuthService {
     /*
       Chamada fake para api
     */ 
-    return Role.USER;
+    return Role.ADMIN;
     
     //return localStorage.getItem('role');
   }

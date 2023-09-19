@@ -14,7 +14,10 @@ export class LoginComponent {
   constructor(private service: LoginService) {
     this.form = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required)
+      password: new FormControl('', Validators.required),
+      // TODO aq preciso ainda fazer o id da sessao e botar o user id pela session
+      sessionId: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]),
+      userId: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(3)])
     });
   }
 
