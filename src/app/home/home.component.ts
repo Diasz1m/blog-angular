@@ -23,9 +23,8 @@ export class HomeComponent {
 
   getPosts() {
     return this.postService.getPosts().subscribe((res: any) => {
-
       //TODO aq vai setar os posts no array de posts
-      res ? this.posts = res : this.posts = [];
+      res ? this.posts = res : this.posts = [{user_id: 1, title: 'TESTE', content: 'TESTE', id: 1}];
     });
   }
 

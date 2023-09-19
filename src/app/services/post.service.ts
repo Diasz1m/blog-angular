@@ -17,15 +17,15 @@ export class PostService {
   }
 
   getPostById(id: number) {
-    return this.http.get(`http://localhost:8080/posts/${id}`);
+    return this.http.get(`http://localhost:8081/posts/${id}`);
   }
 
   deletePostById(id: number): Promise<any> {
-    return this.http.delete(`http://localhost:8080/posts/${id}`).toPromise();
+    return this.http.delete(`http://localhost:8081/posts/${id}`).toPromise();
   }
 
   getPostsByDate(orientation: string) {
     //TODO: implementar a logica de ordenação por data e criação da rota no backend
-    return this.http.get(`http://localhost:8080/posts/date/${orientation}`);
+    return this.http.get(`http://localhost:8081/posts/date/${orientation}`);
   }
 }

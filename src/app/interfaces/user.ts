@@ -3,4 +3,5 @@ export interface User {
     nome: String,
     email: String,
     senha: String,
+    user_id: number
 }
