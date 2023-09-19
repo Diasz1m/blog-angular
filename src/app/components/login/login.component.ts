@@ -36,13 +36,17 @@ export class LoginComponent {
   public login() {
     if (this.form.valid) {
       this.service.login(this.form.value.email, this.form.value.password).subscribe((res: any) => {
+        localStorage.setItem('user_id', res.user_id);
         if (res.role === Role.ADMIN) {
+          localStorage.setItem('user_role', Role.ADMIN);
           window.location.href = 'http://localhost:4200/admin';
         } else {
+          localStorage.setItem('user_role', Role.USER);
           window.location.href = 'http://localhost:4200/home';
         }
-      })
+      });
     }
   }
 
+  
 }
