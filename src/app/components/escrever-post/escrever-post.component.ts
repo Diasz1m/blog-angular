@@ -15,13 +15,13 @@ export class EscreverPostComponent {
       title: new FormControl('', Validators.required),
       content: new FormControl('', Validators.required),
       check: new FormControl(''),
+      user_id: new FormControl(localStorage.getItem('user_id'), Validators.required),
     });
     
   }
 
   onSubmit() {
     console.log(this.form.value);
-    
     if(this.form.valid)
     {
       this.service.createPost(this.form.value).subscribe((res: any) => {
