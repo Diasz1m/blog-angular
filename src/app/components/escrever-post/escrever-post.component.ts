@@ -17,7 +17,6 @@ export class EscreverPostComponent {
       check: new FormControl(''),
       user_id: new FormControl(localStorage.getItem('user_id'), Validators.required),
     });
-    
   }
 
   onSubmit() {

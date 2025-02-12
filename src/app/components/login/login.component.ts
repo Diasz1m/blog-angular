@@ -43,14 +43,14 @@ export class LoginComponent {
       {
         console.table(res);
         localStorage.setItem('user_id', res.userId);
-        if (res.token === Role.ADMIN) {
-          localStorage.setItem('user_role', Role.ADMIN);
-          window.location.href = 'http://localhost:4200/admin';
+        if (res.token == 'ADMIN') {
+          localStorage.setItem('user_role', 'ADMIN');
+          this.Http.navigate(['/admin']);
+
           
         } else {
-          localStorage.setItem('user_role', Role.USER);
+          localStorage.setItem('user_role', 'USER');
           window.location.href = 'http://localhost:4200/home';
-          //Como posso redirecionar o usuario?
           this.Http.navigate(['/home']);
 
         }

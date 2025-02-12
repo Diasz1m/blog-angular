@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,14 @@ export class LoginService {
       return res;
     }).catch((err: any) => {
       console.log(err);
+      return err;
+    });
+  }
+
+  getUserById(userId: Number): Promise<User> {
+    return this.http.get(`${this.postURL}get/` + userId).toPromise().then((res:any) => {
+      return res;
+    }).catch((err: any) =>{
       return err;
     });
   }

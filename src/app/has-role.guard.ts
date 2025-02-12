@@ -29,8 +29,8 @@ export class HasRoleGuard implements CanActivate {
     | UrlTree {
     // const router: Router = inject(Router);
     const userRole: Role = this.service.getUserRole();
-
-    const expectedRoles: Role[] = route.data['roles'];
+    
+    const expectedRoles: Role[] = [Role.ADMIN, Role.USER];
 
     const hasRole: boolean = expectedRoles.some((role) => userRole === role);
       
