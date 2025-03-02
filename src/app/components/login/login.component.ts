@@ -39,21 +39,25 @@ export class LoginComponent {
     if (this.form.valid) {
       const res: any = await this.service.login(this.form.value.email, this.form.value.password)
       
-      if(res)
-      {
-        console.table(res);
-        localStorage.setItem('user_id', res.userId);
-        if (res.token == 'ADMIN') {
-          localStorage.setItem('user_role', 'ADMIN');
-          this.Http.navigate(['/admin']);
+      if (res.ok == false) {
+        alert('Usuario ou senha invalidos');
+        this.form.reset();
+        this.form.controls['email'].setErrors({ 'incorrect': true });
+        return;
+      }
+      
+      console.table(res);
+      localStorage.setItem('user_id', res.userId);
+      if (res.token == 'ADMIN') {
+        localStorage.setItem('user_role', 'ADMIN');
+        this.Http.navigate(['/admin']);
 
-          
-        } else {
-          localStorage.setItem('user_role', 'USER');
-          window.location.href = 'http://localhost:4200/home';
-          this.Http.navigate(['/home']);
+        
+      } else {
+        localStorage.setItem('user_role', 'USER');
+        window.location.href = 'http://localhost:4200/home';
+        this.Http.navigate(['/home']);
 
-        }
       }
     }
   }
