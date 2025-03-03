@@ -5,7 +5,7 @@ import { PostService } from 'src/app/services/post.service';
 @Component({
   selector: 'app-escrever-post',
   templateUrl: './escrever-post.component.html',
-  styleUrls: ['./escrever-post.component.scss']
+  styleUrls: []
 })
 export class EscreverPostComponent {
   form: FormGroup;

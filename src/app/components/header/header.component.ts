@@ -4,8 +4,7 @@ import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  templateUrl: './header.component.html'
 })
 export class HeaderComponent {
 
@@ -17,7 +16,7 @@ export class HeaderComponent {
 
   getUser() {
     const res = this.Service.getUserById(Number(localStorage.getItem('user_id')));
-    res.then((res: any) => {
+    res.subscribe((res: User) => {
       this.user = res;
       console.log(this.user);
     });

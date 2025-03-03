@@ -5,7 +5,7 @@ import { PostService } from 'src/app/services/post.service';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss']
+  styleUrls: []
 })
 export class PostComponent {
   posts:Post[] = [];

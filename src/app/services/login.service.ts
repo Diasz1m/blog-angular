@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { User } from '../interfaces/user';
-
+import { Observable } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,24 +12,27 @@ export class LoginService {
 
   postURL = 'http://localhost:8081/users/';
 
-  login(email: string, password: string): Promise<any> {
-    return this.http.post(`${this.postURL}login`, {
-      email,
-      password
-    }).toPromise().then((res: any) => {
-      console.log(res);
-      return res;
-    }).catch((err: any) => {
-      console.log(err);
-      return err;
-    });
+  login(email: string, password: string): Observable<any> {
+    return this.http.post(`${this.postURL}login`, { email, password }).pipe(
+      map((res: any) => {
+        console.log(res);
+        return res;
+      }),
+      catchError((err: any) => {
+        console.log(err);
+        throw err;
+      })
+    );
+  }
+  getUserById(userId: Number): Observable<User> {
+    return this.http.get<User>(`${this.postURL}get/` + userId).pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError((err: any) => {
+        throw err;
+      })
+    );
   }
 
-  getUserById(userId: Number): Promise<User> {
-    return this.http.get(`${this.postURL}get/` + userId).toPromise().then((res:any) => {
-      return res;
-    }).catch((err: any) =>{
-      return err;
-    });
-  }
 }

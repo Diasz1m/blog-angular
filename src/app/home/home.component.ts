@@ -8,7 +8,7 @@ type orientation = 'asc' | 'desc';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: []
 })
 
 export class HomeComponent {
