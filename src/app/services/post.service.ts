@@ -1,5 +1,7 @@
+import { environment } from '../../environments/enviroment.prod';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 
 @Injectable({
   providedIn: 'root'
@@ -7,25 +9,25 @@ import { Injectable } from '@angular/core';
 export class PostService {
 
   constructor(private http: HttpClient) { }
-
+  url = environment.apiUrl;
   createPost(post: any) {
-    return this.http.post('http://localhost:8081/posts/add', post);
+    return this.http.post(`${this.url}/posts/add`, post);
   }
 
   getPosts() {
-    return this.http.get('http://localhost:8081/posts/all');
+    return this.http.get(`${this.url}/posts/all`);
   }
 
   getPostById(id: number) {
-    return this.http.get(`http://localhost:8081/posts/${id}`);
+    return this.http.get(`${this.url}/posts/${id}`);
   }
 
   deletePostById(id: number): Promise<any> {
-    return this.http.delete(`http://localhost:8081/posts/${id}`).toPromise();
+    return this.http.delete(`${this.url}/posts/${id}`).toPromise();
   }
 
   getPostsByDate(orientation: string) {
     //TODO: implementar a logica de ordenação por data e criação da rota no backend
-    return this.http.get(`http://localhost:8081/posts/date/${orientation}`);
+    return this.http.get(`${this.url}/posts/date/${orientation}`);
   }
 }

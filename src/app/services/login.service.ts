@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import { User } from '../interfaces/user';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+
+import { environment } from '../../environments/enviroment.prod';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +12,7 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  postURL = 'http://localhost:8081/users/';
+  postURL = environment.apiUrl + 'users/';
 
   login(email: string, password: string): Observable<any> {
     return this.http.post(`${this.postURL}login`, { email, password }).pipe(
