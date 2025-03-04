@@ -37,7 +37,7 @@ export class LoginComponent {
    */
   public async login() {
     if (this.form.valid) {
-      const res: any = await this.service.login(this.form.value.email, this.form.value.password)
+      const res: any = this.service.login(this.form.value.email, this.form.value.password)
       
       if (res.ok == false) {
         alert('Usuario ou senha invalidos');
@@ -46,7 +46,6 @@ export class LoginComponent {
         return;
       }
       
-      console.table(res);
       localStorage.setItem('user_id', res.userId);
       if (res.token == 'ADMIN') {
         localStorage.setItem('user_role', 'ADMIN');
